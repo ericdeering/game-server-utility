@@ -60,6 +60,8 @@ list_running_servers() {
 }
 
 start_server() {
+  path=$(echo "$1" | sed 's/\(.*\)\/.*/\1/')
+  cd "$path"
   tmux new-session -d -s "$1" "/bin/bash $1"
 }
 
